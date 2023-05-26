@@ -44,7 +44,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>subjectList</title>
+<title>Subject List</title>
 	<!-- 부트스트랩5 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -109,7 +109,6 @@
 		<nav>
 			<ul class="pagination justify-content-center">
 				<%
-					// 이전은 1페이지에서는 출력되면 안 된다
 					if(beginPage != 1) {
 				%>
 						<li class="page-item">
@@ -118,7 +117,7 @@
 							</a>
 						</li>
 				<%
-					} else {
+					} else { // 1페이지에서는 버튼 비활성화   
 				%>
 						<li class="page-item disabled">
 					      <span class="page-link">&laquo;</span>
@@ -126,13 +125,7 @@
 				<%
 					}
 					for(int i = beginPage; i <= endPage; i++) {
-						if(i == currentPage) { // 현재페이지에서는 a태그 없이 출력
-				%>
-							<li class="page-item disabled">
-								<span class="page-link"><%=i%></span>
-							</li>
-				<%
-						} else {
+						if(i != currentPage) {
 				%>
 							<li class="page-item">
 								<a href="<%=request.getContextPath()%>/subject/subjectList.jsp?currentPage=<%=i%>&rowPerPage=<%=rowPerPage%>" class="page-link">
@@ -140,9 +133,14 @@
 								</a>
 							</li>
 				<%
+						} else { // 현재 페이지에서는 버튼 비활성화
+				%>
+							<li class="page-item disabled">
+								<span class="page-link"><%=i%></span>
+							</li>
+				<%
 						}
 					}
-					// 다음은 마지막 페이지에서는 출력되면 안 된다
 					if(endPage != lastPage) {
 				%>
 						<li class="page-item">
@@ -151,7 +149,7 @@
 							</a>
 						</li>
 				<%
-					} else {
+					} else { // 마지막 페이지에서는 버튼 비활성화
 				%>
 						<li class="page-item disabled">
 					      <span class="page-link">&raquo;</span>
