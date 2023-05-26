@@ -53,8 +53,8 @@ public class SubjectDao {
 	}
 	
 	// 3) 과목 추가
-	public int insertSubject(Subject subject) throws Exception {
-		int row = 0;
+	public int[] insertSubject(Subject subject) throws Exception {
+		int[] rowAndKey = new int[2];
 		
 		String subjectName = subject.getSubjectName();
 		int subjectTime = subject.getSubjectTime();
@@ -63,12 +63,22 @@ public class SubjectDao {
 		Connection conn = dbUtil.getConnection();
 		
 		String sql = "INSERT INTO subject(subject_name, subject_time, createdate, updatedate) VALUES(?, ?, NOW(), NOW())";
-		PreparedStatement stmt = conn.prepareStatement(sql);
+		PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+		// RETURN_GENERATED_KEYS -> 방금 insert한 키 값을 받아올 수 있다
 		stmt.setString(1, subjectName);
 		stmt.setInt(2, subjectTime);
-		row = stmt.executeUpdate();
+		int row = stmt.executeUpdate();
+		rowAndKey[0] = row; // 배열에 row값 넣기
 		
-		return row;
+		// 키 값(subjectNo) 받아오기 // insert 성공시 생성된 과목의 상세페이지로 리다이렉션할 때 사용
+		ResultSet rs = stmt.getGeneratedKeys(); // getGeneratedKeys() 메서드로 키값 호출
+		int subjectNo = 0;
+		if(rs.next()) {
+			subjectNo = rs.getInt(1);
+		}
+		rowAndKey[1] = subjectNo; // 배열에 subjectNo값 넣기
+		
+		return rowAndKey;
 	}
 	
 	// 4) 과목 수정
