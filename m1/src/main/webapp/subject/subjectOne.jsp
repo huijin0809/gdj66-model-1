@@ -73,10 +73,10 @@
 		<a href="<%=request.getContextPath()%>/subject/subjectList.jsp" class="btn btn-outline-secondary">
 			뒤로가기
 		</a>
-		<a href="<%=request.getContextPath()%>/subject/modifySubject.jsp" class="btn btn-secondary">
+		<a href="<%=request.getContextPath()%>/subject/modifySubject.jsp?subjectNo=<%=subjectNo%>" class="btn btn-secondary">
 			수정
 		</a>
-		<a href="<%=request.getContextPath()%>/subject/removeSubject.jsp" class="btn btn-secondary">
+		<a href="<%=request.getContextPath()%>/subject/removeSubject.jsp?subjectNo=<%=subjectNo%>" class="btn btn-secondary">
 			삭제
 		</a>
 	</div>

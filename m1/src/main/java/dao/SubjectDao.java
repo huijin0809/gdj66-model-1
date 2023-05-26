@@ -94,9 +94,9 @@ public class SubjectDao {
 		
 		String sql = "UPDATE subject SET subject_name = ?, subject_time = ?, updatedate = NOW() WHERE subject_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, subjectNo);
-		stmt.setString(2, subjectName);
-		stmt.setInt(3, subjectTime);
+		stmt.setString(1, subjectName);
+		stmt.setInt(2, subjectTime);
+		stmt.setInt(3, subjectNo);
 		row = stmt.executeUpdate();
 		
 		return row;
