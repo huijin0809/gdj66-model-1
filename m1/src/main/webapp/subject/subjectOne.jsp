@@ -20,7 +20,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>subjectOne</title>
+<title>Subject One</title>
 	<!-- 부트스트랩5 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,6 +28,14 @@
 <body>
 	<div class="container mt-5 text-center">
 		<h1>과목 상세보기</h1>
+		<!----- msg 출력 ----->
+		<%
+			if(request.getParameter("msg") != null) {
+		%>
+				<span class="text-danger"><%=request.getParameter("msg")%></span>
+		<%
+			}
+		%>
 		<!------------------ 데이터 출력부 ------------------>
 		<table class="table container">
 			<tr>
@@ -62,7 +70,7 @@
 			</tr>
 		</table>
 		<!----------------- 버튼 출력 ----------------->
-		<a href="<%=request.getContextPath()%>/subject/subjectList.jsp" class="btn btn-secondary">
+		<a href="<%=request.getContextPath()%>/subject/subjectList.jsp" class="btn btn-outline-secondary">
 			뒤로가기
 		</a>
 		<a href="<%=request.getContextPath()%>/subject/modifySubject.jsp" class="btn btn-secondary">
