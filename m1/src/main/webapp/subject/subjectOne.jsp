@@ -76,7 +76,7 @@
 		<a href="<%=request.getContextPath()%>/subject/modifySubject.jsp?subjectNo=<%=subjectNo%>" class="btn btn-secondary">
 			수정
 		</a>
-		<a href="<%=request.getContextPath()%>/subject/removeSubject.jsp?subjectNo=<%=subjectNo%>" class="btn btn-secondary">
+		<a href="<%=request.getContextPath()%>/subject/removeSubjectAction.jsp?subjectNo=<%=subjectNo%>" class="btn btn-secondary">
 			삭제
 		</a>
 	</div>

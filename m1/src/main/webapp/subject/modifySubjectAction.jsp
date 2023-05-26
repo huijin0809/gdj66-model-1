@@ -52,7 +52,7 @@
 		msg = URLEncoder.encode("과목이 정상적으로 수정되었습니다", "utf-8");
 		response.sendRedirect(request.getContextPath() + "/subject/subjectOne.jsp?subjectNo=" + subjectNo + "&msg=" + msg);
 		return;
-	} else {
+	} else { // update 실패시
 		System.out.println("modifySubjectAction 실패");
 		msg = URLEncoder.encode("과목이 수정되지 않았습니다 다시 시도해주세요", "utf-8");
 		response.sendRedirect(request.getContextPath() + "/subject/modifySubject.jsp?subjectNo=" + subjectNo);
