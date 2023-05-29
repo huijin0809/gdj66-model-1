@@ -67,10 +67,10 @@
 		<a href="<%=request.getContextPath()%>/teacher/teacherList.jsp" class="btn btn-outline-warning">
 			뒤로가기
 		</a>
-		<a href="<%=request.getContextPath()%>/subject/modifyTeacher.jsp?teacherNo=<%=teacherNo%>" class="btn btn-warning">
+		<a href="<%=request.getContextPath()%>/teacher/modifyTeacher.jsp?teacherNo=<%=teacherNo%>" class="btn btn-warning">
 			수정
 		</a>
-		<a href="<%=request.getContextPath()%>/subject/removeTeacher.jsp?teacherNo=<%=teacherNo%>" class="btn btn-warning">
+		<a href="<%=request.getContextPath()%>/teacher/removeTeacherAction.jsp?teacherNo=<%=teacherNo%>" class="btn btn-warning">
 			삭제
 		</a>
 	</div>
