@@ -134,4 +134,25 @@ public class SubjectDao {
 		
 		return totalRow;
 	}
+	
+	// 7) 과목 이름과 과목 번호 목록 조회
+	public ArrayList<Subject> subjectNameNumberList() throws Exception {
+		ArrayList<Subject> list = new ArrayList<>();
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		
+		String sql = "SELECT subject_no subjectNo, subject_name subjectName FROM subject";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		Subject subject = null;
+		while(rs.next()) {
+			subject = new Subject();
+			subject.setSubjectNo(rs.getInt("subjectNo"));
+			subject.setSubjectName(rs.getString("subjectName"));
+			list.add(subject);
+		}
+		
+		return list;
+	}
 }
