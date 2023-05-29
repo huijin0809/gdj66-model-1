@@ -52,6 +52,14 @@
 <body>
 	<div class="container mt-5 text-center">
 		<h1>교사 목록</h1>
+		<!----- msg 출력 ----->
+		<%
+			if(request.getParameter("msg") != null) {
+		%>
+				<span class="text-danger"><%=request.getParameter("msg")%></span>
+		<%
+			}
+		%>
 		<!--------------- 과목 목록/글쓰기 버튼 출력 --------------->
 		<div style="float:left;">
 			<a href="<%=request.getContextPath()%>/subject/subjectList.jsp" class="btn btn-outline-secondary">
